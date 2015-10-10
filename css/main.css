@@ -60,14 +60,23 @@
     height: 15%;
 }
 
+.spacer-100px {
+    padding-top:100px;
+}
+
 .bg-purple {
     background-color: rgba(70,27,126,0.6);
     padding-top: 50px;
     padding-bottom: 50px;
 }
 
+.bg-gold {
+    background-color: rgba(184,134,11,0.6);
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
 #main-display {
-    margin-top: 75px;
     margin-bottom: 50px;
 }
 
