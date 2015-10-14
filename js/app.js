@@ -6,15 +6,17 @@ ngApp.controller('CtrlMain', ['$scope', '$uibModal', '$location', function($scop
     $scope.animationsEnabled = true;
 
     $scope.open = function (size) {
-
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'ticketAdditionalInfo.html',
             controller: 'ModalInstanceCtrl',
             size: size
         });
-
     };
+
+    $scope.trololol = function() {
+        alert('You belong in a muse-- err this button works.');
+    }
 }]);
 
 ngApp.controller('ModalInstanceCtrl', ['$scope', '$location', '$modalInstance', function($scope, $location, $modalInstance) {
