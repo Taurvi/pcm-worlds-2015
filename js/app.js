@@ -17,6 +17,8 @@ ngApp.controller('CtrlMain', ['$scope', '$uibModal', '$location', function($scop
     $scope.trololol = function() {
         alert('You belong in a muse-- err this button works.');
     }
+
+
 }]);
 
 ngApp.controller('ModalInstanceCtrl', ['$scope', '$location', '$modalInstance', function($scope, $location, $modalInstance) {
@@ -25,6 +27,10 @@ ngApp.controller('ModalInstanceCtrl', ['$scope', '$location', '$modalInstance', 
     $scope.confirmTicket = function() {
         alert('sending ticket number: ' + $scope.ngTicketNumber);
     };
+
+    $scope.trololol2 = function() {
+        alert('SOON (TM)');
+    }
 
     $scope.close = function () {
         $modalInstance.close();
