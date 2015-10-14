@@ -150,12 +150,13 @@ a:focus {
     padding: 100px 0;
     text-align: center;
     color: #fff;
-    background: url(../img/background.png) no-repeat bottom center scroll;
+    background: url(../img/background.jpg) no-repeat bottom center scroll;
     background-color: #000;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    box-shadow: 0px 0 15px 5px #000000;
 }
 
 .intro .intro-body {
@@ -164,7 +165,7 @@ a:focus {
 }
 
 .intro .intro-body .brand-heading {
-    font-size: 50px;
+    font-size: 45px;
 }
 
 .intro .intro-body .intro-text {
@@ -178,7 +179,7 @@ a:focus {
     }
 
     .intro .intro-body .brand-heading {
-        font-size: 70px;
+        font-size: 65px;
     }
 
     .intro .intro-body .intro-text {
@@ -264,16 +265,33 @@ a:focus {
     padding-top: 100px;
 }
 
+#ticket-information {
+    background: url(../img/info-background.jpg) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    width: 100%;
+
+    z-index: 10;
+    box-shadow: inset 0px 0 15px 15px #000000;
+}
+
 .additional-section {
     width: 100%;
-    padding: 50px 0;
     color: #fff;
-    background: url(../img/vip-background.png) no-repeat center center scroll;
+}
+
+#venue-information {
+    width: 100%;
+    color: #fff;
+    background: url(../img/venue.jpg) no-repeat center center scroll;
     background-color: #000;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    box-shadow: inset 0px 0 15px 15px #000000;
 }
 
 #map {
@@ -283,17 +301,15 @@ a:focus {
 }
 
 @media(min-width:767px) {
-    .content-section {
-        padding-top: 250px;
-    }
-
-    .additional-section {
-        padding: 100px 0;
-    }
 
     #map {
         height: 400px;
         margin-top: 250px;
+    }
+
+    #ticket-information, #venue-information {
+        padding-top: 250px;
+        padding-bottom: 250px;
     }
 }
 
@@ -340,6 +356,11 @@ ul.banner-social-buttons {
 
     ul.banner-social-buttons li:last-child {
         margin-bottom: 0;
+    }
+
+    #ticket-information, #venue-information {
+        padding-top: 100px;
+        padding-bottom: 100px;
     }
 }
 
