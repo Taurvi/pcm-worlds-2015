@@ -36,6 +36,14 @@
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="js/grayscale.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,9 +52,17 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.1/ui-bootstrap-tpls.min.js"></script>
+
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+
+    <script src="js/app.js"></script>
+
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" ng-app="ngApp" ng-controller="CtrlMain">
 
     <!-- Navigation -->
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -56,7 +72,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                    UW League of Legends
+                    League of Legends @ UW | PCM
                 </a>
             </div>
 
@@ -90,10 +106,10 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading">{ALMOST ANYTHING}</h1>
-                        <h2>UW League of Legends - 2015 World's Viewing Party</h2>
+                        <h2>2015 World's Viewing Party</h2>
                         <img id="logo-resize" src="img/logo-white.png">
 
-                        <h2>3:30 AM - October 31</h2>
+                        <h2>3:00 AM - October 31</h2>
                         <h3 class="intro-address">700 Bellevue Way Ne</h3>
                         <h3 class="intro-address">Bellevue, WA 98004</h3>
                     </div>
@@ -108,8 +124,8 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Ticket Information</h2>
                 <i class="fa fa-shopping-cart fa-5x"></i>
-                <p>For only $20*, you can buy access to the venue!</p>
-                <button class="btn btn-default btn-lg"><i class="fa fa-money"></i> PURCHASE VENUE TICKETS HERE <i class="fa fa-money"></i></button>
+                <p>{blurb about ticket}</p>
+                <button class="btn btn-default btn-lg"  ng-click="open('lg')">Purchase Venue Tickets</button>
                 <br>
                 <a href="#additional-packages" class="btn btn-circle page-scroll">
                     <i class="fa fa-angle-double-down animated"></i>
@@ -154,18 +170,43 @@
         </div>
     </footer>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script type="text/ng-template" id="ticketAdditionalInfo.html">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title text-center">Ticketing Instructions</h3>
+            </div>
+            <div class="modal-body center-block">
+                <div class="row">
+                    <div class="col-md-6 modal-block">
+                        <h4 class="text-center">Basic Ticket</h4>
+                        <p>Begin by purchasing your ticket with Cinemark. Be sure to click on the time to open the purchase page!
+                        </p>
+                                <a href="http://www.cinemark.com/theatre-detail.aspx?noredirect=1&node_id=84007#10/30/2015" class="btn btn-default btn-lg center-block col-sm-7 purchase-btn" target="_blank">Cinemark Website</a>
 
-    <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/grayscale.js"></script>
-
+                        <p id="modal-text">In order to insure your reservation with PCM, please provide your ticket number below:</p>
+                        <form>
+                            <div class="input-group">
+                                <input type="text" class="form-control input-lg" ng-model="ngTicketNumber" placeholder="Enter your ticket number here...">
+                                  <span class="input-group-btn">
+                                    <button class="btn btn-success btn-lg" ng-disabled="ngTicketNumber.length <= 10 || !ngTicketNumber" ng-click="confirmTicket()">Confirm!</button>
+                                  </span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-6 modal-block">
+                        <h4 class="text-center">PCM Challenger Package</h4>
+                        <p>You can't boost your elo, but you can certainly boost your swag!</p>
+                        <p>For $9, PCM Challenger Package comes with </p>
+                        <a href="http://www.cinemark.com/theatre-detail.aspx?noredirect=1&node_id=84007#10/30/2015" class="btn btn-default btn-lg center-block col-sm-9 purchase-btn" target="_blank">Purchase Package</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" type="button" ng-click="close()">Close</button>
+            </div>
+        </div>
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,35 @@
+.page-scroll {
+    margin-top: 1em;
+}
+
+.modal-header, .modal-body, .modal-footer {
+    background-color: transparent;
+}
+
+.modal-block {
+    padding-bottom: 1em;
+}
+#modal-text {
+    margin-top: 1em;
+}
+
+.center-block {
+    float: none;
+}
+
+.modal-body p {
+    font-size: 1.2em;
+}
+
+.purchase-btn {
+    margin-bottom: 2em;
+}
+
+.modal-container {
+    background: url(../img/vip-background.png) no-repeat;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
