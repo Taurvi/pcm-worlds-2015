@@ -24,7 +24,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <link rel="manifest" href="favicon/manifest.json">
 
-    <title>UW League of Legends - 2015 Worlds Viewing Party</title>
+    <title>League of Legends @ UW - 2015 Worlds Viewing Party</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -36,6 +36,10 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- Parse -->
+    <script src="//www.parsecdn.com/js/parse-1.6.6.min.js"></script>
+
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
@@ -71,8 +75,8 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="http://fb.com/uwpcm" target="_blank">
-                    League of Legends @ UW | PCM
+                <a class="navbar-brand page-scroll" href="#page-top" target="_blank">
+                    2015 Worlds Viewing Party
                 </a>
             </div>
 
@@ -84,13 +88,19 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#page-top">Top</a>
-                    </li>
-                    <li>
                         <a class="page-scroll" href="#ticket-information">Event & Ticket Information</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#venue-information">Venue Information</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="https://www.facebook.com/events/1644110875829104/">Facebook Event</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="https://www.facebook.com/uwpcm"><i class="fa fa-facebook-square fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="https://www.facebook.com/uwpcm"><i class="fa fa-twitter-square fa-2x"></i></a>
                     </li>
                 </ul>
             </div>
@@ -105,7 +115,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">League till its light out</h1>
+                        <h1 class="brand-heading">League till it's light out</h1>
                         <h2>2015 Worlds Viewing Party</h2>
                         <img id="logo-resize" src="img/logo-white.png">
 
@@ -124,7 +134,7 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Event Information</h2>
                 <p>This year, PCM is partnering with Coca-Cola Esports and Cinemark to bring you an epic World Finals experience! We've got an IMAX Screen and 500 seats reserved for PCM members at the Cinemark. In addition to the Championship Kalista cup provided by Coke, PCM will have tons of activities, swag, skins, and other awesome gear for you and your friends!</p>
-                <button class="btn btn-default btn-lg"  ng-click="open('lg')">Ticket Information</button>
+                <button class="btn btn-default btn-lg"  ng-click="open('lg')">Purchase Tickets Here</button>
                 <br>
                 <a href="#venue-information" class="btn btn-circle page-scroll">
                     <i class="fa fa-angle-double-down animated"></i>
@@ -183,14 +193,16 @@
                         </p>
                                 <a href="http://www.cinemark.com/theatre-detail.aspx?noredirect=1&node_id=84007#10/30/2015" class="btn btn-default btn-lg center-block col-sm-7 purchase-btn" target="_blank">Cinemark Website</a>
 
-                        <p id="modal-text">In order to insure your reservation with PCM, please provide your ticket number below:</p>
+                        <p id="modal-text">In order to insure your reservation with PCM, please provide your confirmation number below:</p>
                         <form>
-                            <div class="input-group">
-                                <input type="text" class="form-control input-lg" ng-model="ngTicketNumber" placeholder="Enter your ticket number here...">
+                            <div class="input-group" ng-class="{ 'has-error' : errorState, 'has-success' : dataSent}">
+                                <input type="text" class="form-control input-lg" ng-model="ngTicketNumber" placeholder="Enter your confirmation number here..." ng-disabled="dataSent" ng-pattern="/^\d+$/" maxlength="16">
                                   <span class="input-group-btn">
-                                    <button class="btn btn-success btn-lg" ng-disabled="ngTicketNumber.length <= 10 || !ngTicketNumber" ng-click="confirmTicket()">Confirm!</button>
+                                    <button class="btn btn-lg" ng-class="{ 'btn-danger' : errorState, 'btn-success' : dataSent }" ng-disabled="(!ngTicketNumber || dataSent) || ((ngTicketNumber.length <= 10 || ngTicketNumber.length == 0))" ng-click="dbCheckDuplicates(ngTicketNumber)">Confirm!</button>
                                   </span>
                             </div>
+                            <div class="has-error" ng-show="errorState">{{errorMsg}}</div>
+                            <div class="has-success" ng-show="dataSent">Your confirmation number has been received.</div>
                         </form>
                     </div>
                     <div class="col-md-6 modal-block modal-block-right">

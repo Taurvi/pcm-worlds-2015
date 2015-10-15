@@ -61,3 +61,15 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.glyphicon {
+    color: #000000;
+}
+
+.has-error {
+    color: #a94442;
+}
+
+.has-success {
+    color: #3c763d;
+}
