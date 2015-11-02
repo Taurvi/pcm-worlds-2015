@@ -2,6 +2,8 @@ var ngApp = angular.module('ngApp', ['ui.bootstrap']);
 Parse.initialize('eKRYapkjFAO9WJQgbrWTAxycmijkQujwXv6SuaSA', 'XZPU2LM3Unsdgs9UQOiV0TIcpR5mIZSoPp1abHvx');
 
 ngApp.controller('CtrlMain', ['$scope', '$uibModal', '$location', function($scope, $uibModal, $location) {
+    $scope.expired = true;
+
     $scope.animationsEnabled = true;
 
     $scope.open = function (size) {

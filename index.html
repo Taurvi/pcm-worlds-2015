@@ -196,7 +196,7 @@
                         <p id="modal-text">In order to ensure your reservation with PCM, please provide your confirmation number below:</p>
                         <form>
                             <div class="input-group" ng-class="{ 'has-error' : errorState, 'has-success' : dataSent}">
-                                <input type="text" class="form-control input-lg" ng-model="ngTicketNumber" placeholder="Enter your confirmation number here..." ng-disabled="dataSent" ng-pattern="/^\d+$/" maxlength="16">
+                                <input type="text" class="form-control input-lg" ng-model="ngTicketNumber" placeholder="Enter your confirmation number here..." ng-disabled="dataSent || expired" ng-pattern="/^\d+$/" maxlength="16">
                                   <span class="input-group-btn">
                                     <button class="btn btn-lg" ng-class="{ 'btn-danger' : errorState, 'btn-success' : dataSent }" ng-disabled="(!ngTicketNumber || dataSent) || ((ngTicketNumber.length <= 10 || ngTicketNumber.length == 0))" ng-click="dbCheckDuplicates(ngTicketNumber)">Confirm!</button>
                                   </span>
